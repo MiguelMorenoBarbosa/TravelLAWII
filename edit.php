@@ -18,7 +18,7 @@ if ($avaliacao > 10 || $avaliacao < 0)
 }
 //insere no Banco
 $PDO = db_connect();
-$sql = "INSERT INTO users(name, UF, ano, avaliacao) VALUES(:name, :UF, :ano, :avaliacao)";
+$sql = "INSERT INTO TravelLAWII(name, UF, ano, avaliacao) VALUES(:name, :UF, :ano, :avaliacao)";
 $stmt = $PDO->prepare($sql);
 $stmt->bindParam(':name', $name);
 $stmt->bindParam(':UF', $UF);

@@ -10,13 +10,13 @@ if (empty($id))
 }
 // busc os dados do usuário a ser editado
 $PDO = db_connect();
-$sql = "SELECT NAME, UF, ano, avaliacao FROM user WHERE id = :id";
+$sql = "SELECT name, UF, ano, avaliacao FROM TravelLAWII WHERE id = :id";
 $stmt = $PDO->prepare($sql);
 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 $stmt->execute();
-$TravelLAWII = $stmt->fetch(PDO::FECTH_ASSOC);
+$TravelLAWII = $stmt->fetch(PDO::FETCH_ASSOC);
 // Se o método fetch() não retornar um array, significa que o ID não corresponde que o ID não corresponde a um usuário válido
-if (!is_array($user))
+if (!is_array($TravelLAWII))
 {
     echo "Nenhum usuário encontrado";
     exit;
@@ -34,8 +34,7 @@ if (!is_array($user))
     <body>
     <div class="container">
         <h1>Sistema de Viagens</h1>
-        <h2>Cadastro de Viagens</h2>
-        <form action="edit.php" method="post">
+        <h2>Cadastro de Viagens</h2><br />
         <div class="form-group">
             <label for="name">Cidade: </label>
             <input type="text" class="form-control col-sm" name="name" id="name" style="width:25%;" value="<?php echo $TravelLAWII['name'] ?>">

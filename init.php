@@ -7,6 +7,6 @@ define('DB_NAME', 'TravelLAWII');
 
 date_default_timezone_set('America/Sao_Paulo');
 
-//inclui o arquivo de funções
 require_once 'functions.php'
+
 ?>

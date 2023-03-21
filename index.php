@@ -13,7 +13,7 @@ $stmt_count = $PDO->prepare($sql_count);
 $stmt_count->execute();
 $total = $stmt_count->fetchColumn();
 //seleciona os registros
-$stmt = $PDO->prepare(sql);
+$stmt = $PDO->prepare($sql);
 $stmt->execute();
 ?>
 <!doctype html>
@@ -50,15 +50,16 @@ $stmt->execute();
                     </tr>
                 </thead>
                 <tbody>
-                    <?php while ($viagens = $stmt->fecth(PDO::FECTH_ASSOC)): ?>
+                    <?php while ($viagens = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
                     <tr>
                         <td><?php echo $viagens['name'] ?></td>
                         <td><?php echo $viagens['UF'] ?></td>
                         <td><?php echo $viagens['ano'] ?></td>
                         <td><?php echo $viagens['avaliacao'] ?></td>
                         <td>
-                            <a href="form-edit-.php?id=<?php echo $user['id'] ?>">Editar</a>
-                            <a href="delete.php?id=<?php echo $user['id'] ?>" onclick="return confirm('Tem certeza de que deseja remover?');">Remover</a>
+                            <a href="form-edit.php?id=<?php echo $viagens['id'] ?>">Editar</a>
+                            <?php echo '-'?>
+                            <a href="delete.php?id=<?php echo $viagens['id'] ?>" onclick="return confirm('Tem certeza de que deseja remover?');">Remover</a>
                         </td>
                     </tr>
                     <?php endwhile; ?>
