@@ -25,11 +25,11 @@ require 'init.php';
         </div>
         <div class="form-group">
             <label for="ano">Ano: </label>
-            <input type="text" class="form-control col-sm" name="ano" id="ano" style="width:25%;" placeholder="Informe o ano da viagem">
+            <input type="int" class="form-control col-sm" name="ano" id="ano" style="width:25%;" placeholder="Informe o ano da viagem">
         </div>
         <div class="form-group">
             <label for="avaliacao">Avaliação: </label>
-            <input type="text" class="form-control col-sm" name="avaliacao" id="avaliacao" style="width:25%;" placeholder="Informe a sua avaliação da viagem">
+            <input type="int" class="form-control col-sm" name="avaliacao" id="avaliacao" style="width:25%;" placeholder="Informe a sua avaliação da viagem">
         </div>
             <button type="submit" class="btn btn-primary">Cadastrar Viagem</button>
         </form>

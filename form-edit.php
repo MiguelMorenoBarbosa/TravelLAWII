@@ -35,6 +35,7 @@ if (!is_array($TravelLAWII))
     <div class="container">
         <h1>Sistema de Viagens</h1>
         <h2>Cadastro de Viagens</h2><br />
+        <form action="edit.php" method="post">
         <div class="form-group">
             <label for="name">Cidade: </label>
             <input type="text" class="form-control col-sm" name="name" id="name" style="width:25%;" value="<?php echo $TravelLAWII['name'] ?>">
@@ -45,11 +46,11 @@ if (!is_array($TravelLAWII))
         </div>
         <div class="form-group">
             <label for="ano">Ano: </label>
-            <input type="text" class="form-control col-sm" name="ano" id="ano" style="width:25%;" value="<?php echo $TravelLAWII['ano'] ?>">
+            <input type="int" class="form-control col-sm" name="ano" id="ano" style="width:25%;" value="<?php echo $TravelLAWII['ano'] ?>">
         </div>
         <div class="form-group">
             <label for="avaliacao">Avaliação: </label>
-            <input type="text" class="form-control col-sm" name="avaliacao" id="avaliacao" style="width:25%;" value="<?php echo $TravelLAWII['avaliacao'] ?>">
+            <input type="int" class="form-control col-sm" name="avaliacao" id="avaliacao" style="width:25%;" value="<?php echo $TravelLAWII['avaliacao'] ?>">
         </div>
             <input type="hidden" name="id" value="<?php echo $id ?>">
             <button type="submit" class="btn btn-primary">Alterar</button>

@@ -18,14 +18,14 @@ if ($avaliacao > 10 || $avaliacao < 0)
 }
 //insere no Banco
 $PDO = db_connect();
-$sql = "INSERT INTO TravelLAWII(name, UF, ano, avaliacao) VALUES(:name, :UF, :ano, :avaliacao)";
+$sql = "UPDATE TravelLAWII SET name= :name, UF = :UF, ano = :ano, avaliacao = :avaliacao WHERE id = :id";
 $stmt = $PDO->prepare($sql);
 $stmt->bindParam(':name', $name);
 $stmt->bindParam(':UF', $UF);
 $stmt->bindParam(':ano', $ano);
 $stmt->bindParam(':avaliacao', $avaliacao);
 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-if ($stmt-> execute())
+if ($stmt -> execute())
 {
     header('Location: index.php');
 }
