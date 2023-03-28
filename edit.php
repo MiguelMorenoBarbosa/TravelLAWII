@@ -5,6 +5,7 @@ $name = isset($_POST['name']) ? $_POST['name'] : null;
 $UF = isset($_POST['UF']) ? $_POST['UF'] : null;
 $ano = isset($_POST['ano']) ? $_POST['ano'] : null;
 $avaliacao = isset($_POST['avaliacao']) ? $_POST['avaliacao'] : null;
+$id = isset($_POST['id']) ? $_POST ['id'] : null;
 //Validação (bem simples, só pra evitar dados vazios)
 if (empty($name) || empty($UF) || empty($ano) || empty($avaliacao))
 {
@@ -18,7 +19,7 @@ if ($avaliacao > 10 || $avaliacao < 0)
 }
 //insere no Banco
 $PDO = db_connect();
-$sql = "UPDATE TravelLAWII SET name= :name, UF = :UF, ano = :ano, avaliacao = :avaliacao WHERE id = :id";
+$sql = "UPDATE TravelLAWII SET name = :name, UF = :UF, ano = :ano, avaliacao = :avaliacao WHERE id = :id";
 $stmt = $PDO->prepare($sql);
 $stmt->bindParam(':name', $name);
 $stmt->bindParam(':UF', $UF);
@@ -31,7 +32,7 @@ if ($stmt -> execute())
 }
 else
 {
-    echo "Erro ao cadastrar";
+    echo "Erro ao alterar";
     print_r($stmt->erroInfo());
 }
 ?>
