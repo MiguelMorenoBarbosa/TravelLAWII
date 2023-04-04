@@ -20,7 +20,6 @@ $stmt->execute();
 <html>
     <head>
         <meta charset="utf-8">
-
     <!-- Custom styles for this template -->
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
     <script src="bootstrap/js/JQuery.js"></script>
@@ -62,8 +61,38 @@ $stmt->execute();
         <div class="container">
             <p class="h1 text-center">Sistema de Viagens</p>
             <br>
-            <p class="h4 text-center">Total de viagens: <?php echo $total ?></p>
+            <p class="h2 text-center">Lista de Viagens</p>
+            <p>Total de viagens: <?php echo $total ?></p>
+            <?php if ($total > 0): ?>
+            <table class="table table-striped" width="50%" border="1">
+                <thead>
+                    <tr>
+                        <th>Cidade de destino</th>
+                        <th>UF</th>
+                        <th>Ano</th>
+                        <th>Avaliação: 0 a 10</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php while ($viagens = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
+                    <tr>
+                        <td><?php echo $viagens['name'] ?></td>
+                        <td><?php echo $viagens['UF'] ?></td>
+                        <td><?php echo $viagens['ano'] ?></td>
+                        <td><?php echo $viagens['avaliacao'] ?></td>
+                        <td>
+                            <a href="form-edit.php?id=<?php echo $viagens['id'] ?>">Editar</a>
+                            <?php echo '-'?>
+                            <a href="delete.php?id=<?php echo $viagens['id'] ?>" onclick="return confirm('Tem certeza de que deseja remover?');">Remover</a>
+                        </td>
+                    </tr>
+                    <?php endwhile; ?>
+                </tbody>
+            </table>
+            <?php else: ?>
+            <p>Nenhuma viagem registrada</p>
+            <?php endif; ?>
         </div>
     </body>
 </html>
-
