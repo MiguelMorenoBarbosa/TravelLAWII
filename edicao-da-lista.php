@@ -7,7 +7,7 @@ $PDO = db_connect();
 //É recomendável usar a função COUNT da SQL
 $sql_count = "SELECT COUNT(*) AS total FROM TravelLAWII";
 //SQL para selecionar os registros
-$sql = "SELECT id, name, UF, ano, avaliacao FROM TravelLAWII";
+$sql = "SELECT id, name, UF, ano, avaliacao, tipo FROM TravelLAWII";
 //conta o total de registros
 $stmt_count = $PDO->prepare($sql_count);
 $stmt_count->execute();
@@ -41,10 +41,9 @@ $stmt->execute();
                     <a class="nav-link" href="index.php">Início <span class="sr-only">(atual)</span></a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tarefas</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Viagens</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown10">
                         <a class="dropdown-item" href="form-add.php">Cadastrar Viagem</a>
-                        <a class="dropdown-item" href="lista.php">Lista de Viagens</a>
                         <a class="dropdown-item" href="edicao-da-lista.php">Edição de Viagens</a>
                     </div>
                 </li>
@@ -60,9 +59,9 @@ $stmt->execute();
     </div>
         <div class="container">
             <p class="h1 text-center">Sistema de Viagens</p>
-            <br>
             <p class="h2 text-center">Lista de Viagens</p>
-            <p>Total de viagens: <?php echo $total ?></p>
+            <br>
+            <p class="text-center">Total de viagens: <?php echo $total ?></p>
             <?php if ($total > 0): ?>
             <table class="table table-striped" width="50%" border="1">
                 <thead>
@@ -82,7 +81,7 @@ $stmt->execute();
                         <td><?php echo $viagens['ano'] ?></td>
                         <td><?php echo $viagens['avaliacao'] ?></td>
                         <td>
-                            <a href="form-edit.php?id=<?php echo $viagens['id'] ?>">Editar</a>
+                            <a hanoref="form-edit.php?id=<?php echo $viagens['id'] ?>">Editar</a>
                             <?php echo '-'?>
                             <a href="delete.php?id=<?php echo $viagens['id'] ?>" onclick="return confirm('Tem certeza de que deseja remover?');">Remover</a>
                         </td>
@@ -91,7 +90,7 @@ $stmt->execute();
                 </tbody>
             </table>
             <?php else: ?>
-            <p>Nenhuma viagem registrada</p>
+            <p class="text-center">Nenhuma viagem registrada</p>
             <?php endif; ?>
         </div>
     </body>

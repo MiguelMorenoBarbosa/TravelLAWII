@@ -1,5 +1,9 @@
 <?php
-require 'init.php';
+require_once 'init.php';
+$PDO=db_connect();
+$sql="SELECT id , tipo FROM tipo ORDER BY tipo ASC";
+$stmt=$PDO->prepare($sql);
+$stmt->execute();
 ?>
 <!doctype html>
 <html>
@@ -29,7 +33,6 @@ require 'init.php';
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tarefas</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown10">
                         <a class="dropdown-item" href="form-add.php">Cadastrar Viagem</a>
-                        <a class="dropdown-item" href="lista.php">Lista de Viagens</a>
                         <a class="dropdown-item" href="edicao-da-lista.php">Edição de Viagens</a>
                     </div>
                 </li>
@@ -44,25 +47,25 @@ require 'init.php';
     </nav>
     </div>
     <div class="container">
-        <h1>Sistema de Viagens</h1>
-        <h2>Cadastro de Viagens</h2>
+        <p class="h1 text-center">Sistema de Viagens</p>
+        <p class="h2 text-center">Cadastro de Viagens</p>
 
         <form action="add.php" method="post">
         <div class="form-group">
             <label for="name">Cidade: </label>
-            <input type="text" class="form-control col-sm" name="name" id="name" style="width:25%;" placeholder="Informe o nome de sua Cidade de destino">
+            <input type="text" class="form-control col-sm" name="name" id="name" style="width:100%;" placeholder="Informe o nome de sua Cidade de destino">
         </div>
         <div class="form-group">
             <label for="UF">UF: </label>
-            <input type="text" class="form-control col-sm" name="UF" id="UF" style="width:25%;" placeholder="Informe o nome do seu Estado de destino">
+            <input type="text" class="form-control col-sm" name="UF" id="UF" style="width:100%;" placeholder="Informe o nome do seu Estado de destino">
         </div>
         <div class="form-group">
             <label for="ano">Ano: </label>
-            <input type="int" class="form-control col-sm" name="ano" id="ano" style="width:25%;" placeholder="Informe o ano da viagem">
+            <input type="int" class="form-control col-sm" name="ano" id="ano" style="width:100%;" placeholder="Informe o ano da viagem">
         </div>
         <div class="form-group">
             <label for="avaliacao">Avaliação: </label>
-            <select class="form-control col-sm" name="avaliacao" id="avaliacao" style="width:25%;">
+            <select class="form-control col-sm" name="avaliacao" id="avaliacao" style="width:100%;">
             <option value="1"> 1 </option>
             <option value="2"> 2 </option>
             <option value="3"> 3 </option>
@@ -74,6 +77,15 @@ require 'init.php';
             <option value="9"> 9 </option>
             <option value="10"> 10 </option>
             </select>
+        </div>
+        <div class ="form-group" >
+            <label for="tipo"> Selecione o tipo da tarefa </label>
+                <select class ="form-control" name ="tipo" id ="tipo" required >
+                <?php while ( $tipo = $stmt -> fetch ( PDO :: FETCH_ASSOC)): ?>
+                    <option value =" <?php echo $dados ['id'] ?> "> <?php
+                echo $tipo ['tipo'] ?> </option>
+                <?php endwhile; ?>
+                </select>
         </div>
             <button type="submit" class="btn btn-primary">Cadastrar Viagem</button>
         </form>

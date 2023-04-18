@@ -10,7 +10,7 @@ if (empty($id))
 }
 // busc os dados do usuário a ser editado
 $PDO = db_connect();
-$sql = "SELECT name, UF, ano, avaliacao FROM TravelLAWII WHERE id = :id";
+$sql = "SELECT name, UF, ano, avaliacao, tipo FROM TravelLAWII WHERE id = :id";
 $stmt = $PDO->prepare($sql);
 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 $stmt->execute();

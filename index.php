@@ -7,7 +7,7 @@ $PDO = db_connect();
 //É recomendável usar a função COUNT da SQL
 $sql_count = "SELECT COUNT(*) AS total FROM TravelLAWII";
 //SQL para selecionar os registros
-$sql = "SELECT id, name, UF, ano, avaliacao FROM TravelLAWII";
+$sql = "SELECT id, name, UF, ano, avaliacao, tipo FROM TravelLAWII";
 //conta o total de registros
 $stmt_count = $PDO->prepare($sql_count);
 $stmt_count->execute();
@@ -42,10 +42,9 @@ $stmt->execute();
                     <a class="nav-link" href="index.php">Início <span class="sr-only">(atual)</span></a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tarefas</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Viagens</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown10">
                         <a class="dropdown-item" href="form-add.php">Cadastrar Viagem</a>
-                        <a class="dropdown-item" href="lista.php">Lista de Viagens</a>
                         <a class="dropdown-item" href="edicao-da-lista.php">Edição de Viagens</a>
                     </div>
                 </li>

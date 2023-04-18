@@ -5,6 +5,7 @@ $name = isset($_POST['name']) ? $_POST['name'] : null;
 $UF = isset($_POST['UF']) ? $_POST['UF'] : null;
 $ano = isset($_POST['ano']) ? $_POST['ano'] : null;
 $avaliacao = isset($_POST['avaliacao']) ? $_POST['avaliacao'] : null;
+$tipo = isset($_POST['tipo']) ? $_POST['tipo'] : null;
 //Validação (bem simples, mais uma vez)
 if (empty($name) || empty($UF) || empty($ano) || empty($avaliacao))
 {

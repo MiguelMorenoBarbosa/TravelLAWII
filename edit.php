@@ -6,6 +6,7 @@ $UF = isset($_POST['UF']) ? $_POST['UF'] : null;
 $ano = isset($_POST['ano']) ? $_POST['ano'] : null;
 $avaliacao = isset($_POST['avaliacao']) ? $_POST['avaliacao'] : null;
 $id = isset($_POST['id']) ? $_POST ['id'] : null;
+$tipo = isset($_POST['tipo']) ? $_POST ['tipo'] : null;
 //Validação (bem simples, só pra evitar dados vazios)
 if (empty($name) || empty($UF) || empty($ano) || empty($avaliacao))
 {
@@ -26,6 +27,7 @@ $stmt->bindParam(':UF', $UF);
 $stmt->bindParam(':ano', $ano);
 $stmt->bindParam(':avaliacao', $avaliacao);
 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+$stmt->bindParam(':tipo', $tipo);
 if ($stmt -> execute())
 {
     header('Location: index.php');
